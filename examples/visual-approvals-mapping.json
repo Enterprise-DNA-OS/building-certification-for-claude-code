@@ -1,0 +1,15 @@
+{
+  "_": "Put your report's column heading against each field. Delete the lines you do not need: the defaults in docs/replace-visual-approvals.md still apply. This is a starting point, not a Visual Approvals file format.",
+  "code": "Application No",
+  "approval_type": "Approval Type",
+  "building_class": "Class",
+  "site_address": "Site Address",
+  "jurisdiction": "State",
+  "council": "Council",
+  "client": "Client",
+  "certifier": "Certifier",
+  "received_on": "Date Received",
+  "decided_on": "Decision Date",
+  "fee": "Total Fee",
+  "description": "Description of Work"
+}

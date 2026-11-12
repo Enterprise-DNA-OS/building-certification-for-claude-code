@@ -8,13 +8,14 @@ That layer used to be the whole product, because talking to a database was hard.
 
 - **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
 - **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
+- **Your data in your own database.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
 - **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
 
 ## What you give up
 
 - **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
+- **The iPad inspection app.** Visual Approvals has an inspection app that works offline on site. Here a result is recorded after the visit, from a laptop or by asking Claude Code. If your inspectors write up on site, that is the first thing Enterprise DNA builds into your version.
+- **E-sign, SMS and the quote portal.** Drafts land in `drafts/` and a person sends them.
 - **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
 
 ## Who this fits

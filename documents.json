@@ -1,11 +1,36 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "inspection-record",
+    "title": "Inspection record",
+    "for_each": "select i.id, i.code from inspections i where i.inspected_on is not null order by i.code",
+    "file": "code",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      { "title": "Inspection", "layout": "record", "sql": "select i.code, a.code job, a.site_address, a.approval_type, a.building_class, a.jurisdiction, i.stage, i.inspected_on, i.result, ce.name inspector, ce.registration_no, i.evidence_ref from inspections i join applications a on a.id = i.application_id left join certifiers ce on ce.id = i.inspector_id where i.id = $1" },
+      { "title": "Findings", "layout": "record", "sql": "select findings from inspections where id = $1" },
+      { "title": "Stages on this job", "sql": "select s.stage, s.passed_on, s.booked_for from stage_status s join inspections i on i.application_id = s.application_id where i.id = $1 order by s.sequence" }
+    ]
+  },
+  {
+    "name": "fee-proposal",
+    "title": "Fee proposal",
+    "for_each": "select q.id, q.code from quotes q where q.status = 'sent' order by q.code",
+    "file": "code",
+    "sections": [
+      { "title": "Proposal", "layout": "record", "sql": "select q.code, cl.name client, q.site_address, q.jurisdiction, q.approval_type, q.building_class, q.description, q.sent_on from quotes q join clients cl on cl.id = q.client_id where q.id = $1" },
+      { "title": "Fee", "sql": "select 'Assessment, approval and ' || inspections_included || ' inspection(s)' item, fee_cents from quotes where id = $1", "note": "Fees exclude GST unless stated. Additional or repeat inspections are quoted separately." }
+    ]
+  },
+  {
+    "name": "job-file",
+    "title": "Job file summary",
+    "for_each": "select id, code from applications where status <> 'withdrawn' order by code",
+    "file": "code",
+    "sections": [
+      { "title": "Job", "layout": "record", "sql": "select code, jurisdiction, approval_type, class, site_address, client, council, certifier, status, received_on, decided_on, council_lodged_on, final_issued_on from job_register where id = $1" },
+      { "title": "Required stages", "sql": "select stage, passed_on, booked_for, failed_attempts from stage_status where application_id = $1 order by sequence" },
+      { "title": "Inspections", "sql": "select code, stage, booked_for, result, inspected_on, findings from inspections where application_id = $1 order by booked_for" },
+      { "title": "Information requests", "sql": "select code, request, sent_on, due_on, received_on from info_requests where application_id = $1 order by sent_on" },
+      { "title": "Rule findings", "sql": "select c.rule, c.finding from record_checks c join applications a on a.code = c.code where a.id = $1" }
     ]
   }
 ]

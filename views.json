@@ -1,14 +1,24 @@
 [
   {
     "name": "week",
-    "title": "This week",
+    "title": "The certification week",
     "subtitle": "Building Certification for Claude Code: what needs attention, rendered by npm run view",
     "sections": [
-      {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
-      }
+      { "title": "Needs attention", "note": "Overdue or about to lapse, oldest first.", "sql": "select code, issue, due from attention order by due, code" },
+      { "title": "Approvals still to reach council", "note": "Due date from the jurisdiction's lodgement clock.", "sql": "select code, jurisdiction, council, decided_on, due_on, days_left from lodgements_due order by due_on" },
+      { "title": "Inspections in the next seven days", "sql": "select code, job, stage, booked_for, inspector, site_address, state from inspections_due where booked_for <= current_date + 7 order by booked_for" },
+      { "title": "Waiting for a reinspection", "sql": "select code, job, stage, inspected_on, findings from reinspections_needed order by inspected_on" },
+      { "title": "Rule checks", "sql": "select code, rule, jurisdiction, finding from record_checks order by rule, code" }
+    ]
+  },
+  {
+    "name": "money",
+    "title": "Fees and work coming in",
+    "subtitle": "Fee proposals, fees owing and approvals by month",
+    "sections": [
+      { "title": "Fee proposals waiting for an answer", "sql": "select code, client, site_address, approval_type, fee_cents, sent_on, days_waiting from quotes_waiting order by sent_on" },
+      { "title": "Fees owing", "sql": "select code, client, fee_cents, uninvoiced_cents, owing_cents from fees_owing order by owing_cents desc" },
+      { "title": "Approvals by month", "sql": "select month, approval_type, approvals from approvals_by_month order by month desc, approval_type" }
     ]
   }
 ]
