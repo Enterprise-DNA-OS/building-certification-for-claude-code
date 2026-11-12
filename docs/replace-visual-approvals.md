@@ -4,7 +4,7 @@ Run both side by side for a month. Keep Visual Approvals until the job file here
 
 ## 1. Get your records out
 
-Visual Approvals does not publish an export format or a data model. Its pricing and feature pages list standard reports, custom reports and income summaries. Run the report that lists your applications (number, type, class, site, council, client, certifier, dates and fee) and save it as CSV. Excel works too: open it and save as CSV UTF-8.
+Visual Approvals does not publish an export format or a data model. Its pricing and feature pages list standard reports, custom reports and income summaries; they do not say which formats a report saves to. Run the report that lists your applications (number, type, class, site, council, client, certifier, dates and fee) and save it as CSV, or as Excel and then CSV UTF-8. If your plan cannot save a report as a spreadsheet, ask Visual Approvals for a copy of your data.
 
 What it does not give you in one report: inspection history, information requests and payments. Bring those across by hand for open jobs (the inspection list for each live job is usually short), and keep the closed files in your document store with their retention date.
 

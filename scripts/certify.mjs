@@ -356,8 +356,8 @@ const handlers = {
 
 // ------------------------------------------------------------------ import
 
-// Visual Approvals publishes no export format. Its standard and custom reports print to CSV or
-// Excel; save the application register report as CSV. The default mapping below covers the usual
+// Visual Approvals publishes no export format. It lists standard and custom reports; save the
+// one that lists your applications as CSV. The default mapping below covers the usual
 // labels; pass --mapping=<file.json> ({ "code": "Your Column", ... }) when your report differs.
 export const DEFAULT_MAPPING = {
   code: ['Application No', 'Application Number', 'Job No', 'Job Number', 'Reference'],

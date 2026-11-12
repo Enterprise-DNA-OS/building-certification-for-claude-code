@@ -177,7 +177,7 @@ Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same 
 
 ## Instead of Visual Approvals
 
-Visual Approvals does not publish an export format. Its standard and custom reports print to CSV or Excel. Save your application register report as CSV, then:
+Visual Approvals does not publish an export format. It lists standard and custom reports. Run the one that lists your applications and save it as CSV, if your plan allows it (if not, ask Visual Approvals for your data), then:
 
 ```bash
 npm run certify -- import visual-approvals --file=register.csv --dry-run --actor="Your Name"
